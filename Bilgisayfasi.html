@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgi Sayfası</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(61, 107, 147);
+            background: url("tavsan.jpg");
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        .container {
+            background-color: rgba(240, 248, 255, 0.4);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 50%;
+            /* Sayfanın genişliğine göre bir yüzdelik değeri ayarlayabilirsiniz */
+            height: 50%;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <br><br><br><br>
+        <form id="petForm">
+            <label for="petType">Evcil Hayvan Türü:</label>
+            <select id="petType" name="petType" onchange="showBreeds()">
+                <option value="secim">Evcil Hayvan Türünü Seçiniz...</option>
+                <option value="kopek">Köpek</option>
+                <option value="kedi">Kedi</option>
+                <option value="kus">Kuş</option>
+                <option value="balik">Balık</option>
+                <option value="tavsan">Tavşan</option>
+            </select><br><br>
+
+            <div id="breedSection">
+                <label for="breed">Evcil Hayvan Cinsi:</label>
+                <select id="breed" name="breed">
+                    <option value="secim2">Evcil Hayvan Cinsini Seçiniz...</option>
+                </select>
+            </div><br>
+
+            <button type="button" onclick="submitForm()">Gönder</button>
+        </form>
+    </div>
+
+    <script>
+        var petType; // Global değişken olarak tanımlanmalı
+
+        function showBreeds() {
+            petType = document.getElementById("petType").value;
+            var breedSection = document.getElementById("breedSection");
+
+            // Her seçimde cinsleri temizle
+            document.getElementById("breed").innerHTML = "";
+
+            if (petType == "secim") {
+                var secimBreeds = ["Evcil Hayvan Cinsini Seçiniz..."];
+                populateBreeds(secimBreeds);
+            }
+
+            if (petType === "kedi") {
+                var catBreeds = ["Van Kedisi", "Scottish Fold", "Chinchilla"];
+                populateBreeds(catBreeds);
+            }
+            if (petType === "kopek") {
+                var dogBreeds = ["Sivas Kangalı", "Golden Retriever", "Siberian Husky"];
+                populateBreeds(dogBreeds);
+            }
+            if (petType == "kus") {
+                var kusBreeds = ["Muhabbet Kuşu", "Papağan", "Kanarya"];
+                populateBreeds(kusBreeds);
+            }
+            if (petType == "balik") {
+                var balikBreeds = ["Kristal Köpek Balığı", "Japon Balığı", "Vatoz Balığı"];
+                populateBreeds(balikBreeds);
+            }
+            if (petType == "tavsan") {
+                var tavsanBreeds = ["Rex Tavşanı", "Hollanda Lop", "Hothot Tavşanı"];
+                populateBreeds(tavsanBreeds);
+            }
+            breedSection.style.display = "block";
+        }
+
+        function populateBreeds(breeds) {
+            var breedDropdown = document.getElementById("breed");
+            for (var i = 0; i < breeds.length; i++) {
+                var option = document.createElement("option");
+                option.text = breeds[i];
+                breedDropdown.add(option);
+            }
+        }
+
+        function submitForm() {
+            var selectedBreed = document.getElementById("breed").value;
+
+            if (petType == "kopek") {
+                if(selectedBreed == "Golden Retriever") {
+                    window.location.href = "goldenretriever.html";
+                }
+                if(selectedBreed == "Sivas Kangalı") {
+                    window.location.href = "sivaskangali.html" ;
+                }
+                if(selectedBreed == "Siberian Husky") {
+                    window.location.href = "siberianhusky.html" ;
+                }       
+            } 
+            if(petType == "kedi") {
+                if(selectedBreed == "Van Kedisi") {
+                    window.location.href = "vankedisi.html" ;
+                }
+                if(selectedBreed == "Scottish Fold") {
+                    window.location.href = "scottishfold.html" ;
+                }
+                if(selectedBreed == "Chinchilla") {
+                    window.location.href = "chinchilla.html" ;
+                }
+            }
+            if(petType == "kus") {
+                if(selectedBreed == "Muhabbet Kuşı") {
+                    window.location.href = "muhabbetkusu.html" ;
+                }
+                if(selectedBreed == "Papağan") {
+                    window.location.href = "papagan.html" ;
+                }
+                if(selectedBreed == "Kanarya") {
+                    window.location.href = "kanarya.html" ;
+                }
+            }
+            if(petType == "balik") {
+                if(selectedBreed == "Kristal Köpek Balığı") {
+                    window.location.href = "kristalkopekbaligi.html" ;
+                }
+                if(selectedBreed == "Japon Balığı") {
+                    window.location.href = "japonbaligi.html" ;
+                }
+                if(selectedBreed == "Vatoz Balığı") {
+                    window.location.href = "vatozbaligi.html" ;
+                }
+            }
+            if(petType == "tavsan") {
+                if(selectedBreed == "Rex Tavşanı") {
+                    window.location.href = "rextavsani.html" ;
+                }
+                if(selectedBreed == "Hollanda Lop") {
+                    window.location.href = "hollandalop.html" ;
+                }
+                if(selectedBreed == "Hothot Tavşanı") {
+                    window.location.href = "hothottavsani.html" ;
+                } 
+            }          
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>   
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width = device-width, initial-scale = 1.0"> 
+        <!-- device-width ifadesi sayfanın genişliğini cihaza ayarlar.-->
+        <!-- initial-scale ifadesi sayfa ilk kez ziyaret ettiğindeki ölçek oranını belirtir. Mesela 1.0 orijinal ölçektir.-->
+        <title>Profil Sayfası</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif ; /* Sayfada kullanılacak yazı tipini belirtir. */
+                background-color :aliceblue ;
+                margin : 0 ; /* Sayfa içeriğinin dış kısma olan uzaklığını belirler. 0 olduğu için uzaklık 0'dır. */
+                display : flex ;
+                align-items : center ;
+                justify-content: center ; /* bu ve yukarıdakiler hizalamak için kullanılır */
+                height : 100vh ; /* Sayfanın yüksekliğini belirtir. */
+                background: url("at.jpg") top left / 50% 50% no-repeat,
+                            url("balik2.jpg") top right / 50% 50% no-repeat,
+                            url("kopek.jpg") bottom left / 50% 50% no-repeat,
+                            url("papagan2.jpg") bottom right / 50% 50% no-repeat;
+            }
+
+            .container {
+                background-color: rgba(240, 248, 255, 0.5);
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            label {
+                display : block ;
+                margin-bottom: 8px ;
+            }
+
+            input {
+                width : 100% ;                          /*Bu kısımlar belirli HTML elemanlarına ait stili belirler. */
+                padding : 8px ;
+                margin-bottom : 16px ;
+                box-sizing :border-box ;
+            }
+
+            button {
+                background-color: #4caf50;
+                color: #fff;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            #registerForm {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Üye Girişi</h2>
+            <label for="loginEmail">E-mail :</label>
+            <input type="email" name="loginEmail" id="loginEmail" required>
+            <label for="loginPassword">Şifre :</label>
+            <input type="password" name="loginPassword" id="loginPassword" required>
+
+            <button type="button" onclick="Login()">Giriş Yap</button><br><br>
+
+            <form id="registerForm">
+                <label for="registerFullName">İsim ve Soyisim :</label>
+                <input type="text" name="registerFullName" id="registerFullName" required>
+                <label for="registerEmail">E-mail :</label>
+                <input type="email" name="registerEmail" id="registerEmail" required >
+                <label for="registerPassword">Şifre :</label>
+                <input type="password" name="registerPassword" id="registerPassword" required >
+                <label for="registerPassword">Yeniden Şifre :</label>
+                <input type="password" name="registerPasswordRepeat" id="registerPasswordRepeat" required >
+                <label for="animalName">Hayvan adı:</label>
+                <input type="text" name="registerAnimalName" id="registerAnimalName">
+
+                <button type="button" onclick="Register()">Üye Ol</button>
+
+
+            </form>
+            <p id="registerPrompt">Henüz üye değil misiniz? <button onclick="ToggleRegisterForm()">Üye olmak için tıklayın</button></p>
+        </div>
+        <script>
+            function Login() {
+                var loginEmail = document.getElementById("loginEmail").value ;
+                var loginPassword = document.getElementById("loginPassword").value ;
+                alert("Giriş Yapıldı. Hoşgeldiniz !") ;
+            }
+
+            function Register() {
+                var registerFullName = document.getElementById("registerFullName").value ;
+                var registerEmail = document.getElementById("registerEmail").value ;
+                var registerPassword = document.getElementById("registerPassword").value ;
+                alert("Üyelik İşlemleri Tamamlandı.Aramıza Hoşgeldiniz !") ;
+            }
+            function ToggleRegisterForm() {
+                var registerForm = document.getElementById("registerForm");
+                var registerPrompt = document.getElementById("registerPrompt");
+
+                if (registerForm.style.display === "none") {
+                    registerForm.style.display = "block";
+                    registerPrompt.style.display = "none";
+                } else {
+                    registerForm.style.display = "none";
+                    registerPrompt.style.display = "block";
+                }
+            }            
+        </script>
+    </body>
+</html>

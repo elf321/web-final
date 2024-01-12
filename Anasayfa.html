@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetPuzzle.com</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.2/dist/fullcalendar.min.js"></script>
+    <style>
+        body {
+            background-image: url('a5.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background: url('.jpg');
+            height: 100vh;
+            background-size: 100% 100%;
+        }
+
+        .container .navbar {
+            width: 100%;
+            height: 200px;
+            background: rgb(87, 153, 207, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .navbar ul {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+        }
+
+        .navbar ul li {
+            list-style: none;
+            display: inline-block;
+            margin: 0.8px;
+            line-height: 80px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            padding: 6px 13px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar .logo,
+        .navbar .second-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            top: 30px;
+        }
+
+        .navbar .logo {
+            left: 20px;
+        }
+
+        .navbar .second-logo {
+            right: 20px;
+        }
+
+        .navbar .logo a,
+        .navbar .second-logo a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .navbar .logo img,
+        .navbar .second-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .navbar ul li a.active,
+        .navbar ul li a:hover {
+            background: #ff6e00;
+            border-radius: 2px;
+        }
+
+        .container .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            color: white;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            margin-right: 10px;
+        }
+
+        .container .calendar {
+            margin-top: 122px; /* Takvimin konumunu daha aşağıya çekmek için margin-top değerini artırın */
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(25, 68, 104, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto ;
+        }
+
+        /* Yeni Eklenen Stil */
+        @media screen and (max-width: 768px) {
+            .container .calendar {
+                margin-top: 20px; /* Mobil ekranlarda daha yakın bir konumlandırma */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="#">
+                    <img src="PetPuzzle-2.jpg" alt="Logo">
+                </a>
+            </div>
+            <div class="second-logo">
+                <a href="#">
+                    <img src="profil.jpg" alt="Second Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="#" class="active">Ana Sayfa</a></li>
+                <li><a href="#">Bilgi Sayfası</a></li>
+                <li><a href="#">Deneyim Sayfası</a></li>
+            </ul>
+        </div>
+
+        <div class="calendar"></div>
+    </div>
+    <br><br><br><br>
+
+    <script>
+        $(document).ready(function() {
+            $('.calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: [{
+                        title: 'Köpekler için\npark buluşması\n!',
+                        start: '2024-01-10'
+                    },
+                    {
+                        title: 'Kediler için\nev buluşması\n!',
+                        start: '2024-01-19'
+
+                    },
+                    {
+                        title: 'Tavşanlarla bir\nlikte tünel gezisi\n!',
+                        start: '2024-01-15'
+                    },
+                    {
+                        title: 'Evcil hayvan\nlarınızla fotoğraf\nçekimi!',
+                        start: '2024-01-30'
+
+                    },
+                    {
+                        title: 'Köpeklerinizle\nyürüyüş programı\n!',
+                        start: '2024-01-06'
+                    },
+                    {
+                        title: 'Muhabbet kuşlarına\nkonuşma eğitimi\n!',
+                        start: '2024-02-07'
+                    },
+                    {
+                        title: 'Evcil dostlarımızla\nbalık yeme\etkinliği !',
+                        start: '2024-02-17'
+
+                    },
+                    {
+                        title: 'Kedilerle birlik\nte kafe\ntoplantısı !',
+                        start: '2024-02-26'
+
+                    }
+                ]
+            });
+        });
+        document.querySelector('.navbar li:nth-child(2) a').addEventListener('click', function () {
+            window.location.href = 'Bilgisayfasi.html';
+        });
+        document.querySelector('.navbar li:nth-child(3) a').addEventListener('click', function () {
+            window.location.href = 'Deneyimsayfasi.html';
+        });
+        document.querySelector('.second-logo a').addEventListener('click', function () {
+            window.location.href = 'Profilsayfasi.html';
+        });
+        document.querySelector('.navbar li:nth-child(1) a').addEventListener('click', function () {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>
